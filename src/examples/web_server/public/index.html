@@ -1,0 +1,39 @@
+<html>
+<body>
+<form action="http://127.0.0.1:8082/process_get" method="GET">
+First Name: <input type="text" name="first_name">  <br>
+ 
+Last Name: <input type="text" name="last_name">
+<input type="submit" value="GetSubmit">
+</form>
+
+<form action="http://127.0.0.1:8082/process_post" method="POST">
+First Name: <input type="text" name="first_name">  <br>
+ 
+Last Name: <input type="text" name="last_name">
+<input type="submit" value="PostSubmit">
+</form>
+
+<h3>文件上传：</h3>
+选择一个文件上传: <br />
+<form action="/file_upload" method="post" enctype="multipart/form-data">
+<input type="file" name="image" size="50" />
+<br />
+<input type="submit" value="上传文件" />
+</form>
+
+<h3>新增用户</h3>
+<form action="/addUser" method="POST" enctype="multipart/form-data">
+name: <input type="text" name="name">  <br> 
+password: <input type="password" name="password"> <br>
+profession: <input type="text" name="profession">  <br>
+id: <input type="text" name="id">  <br>
+<input type="submit" value="新增">
+</form>
+
+<h3>查看用户</h3>
+<form action="/listUsers" method="GET">
+ <input type="submit" value="查看">
+</form>
+</body>
+</html>
