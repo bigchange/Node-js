@@ -23,3 +23,33 @@ var callback = function(response){
 // 向服务端发送请求
 var req = http.request(options, callback);
 req.end();
+
+
+
+
+// post 
+
+exports.postExtractor = function (data, response) {  
+  
+    var opt = {  
+        method: "POST",  
+        host: "hg003",  
+        port: 7778,  
+        path: "/api/extract_by_content",  
+        headers: {  
+            "Content-Type": 'application/octet-stream',  
+            "Content-Length": data.length  
+        }  
+    };  
+  
+    http.request(opt, function (serverFeedback) {  
+        if (serverFeedback.statusCode == 200) {  
+            var body = "";  
+            serverFeedback.on('data', function (data) { body += data; })  
+                          .on('end', function () { res.send(200, body); });  
+        }  
+        else {  
+            res.send(500, "error");  
+        }  
+    });  
+}  

@@ -5,6 +5,8 @@ var path = require("path")
 var bodyParser = require('body-parser');
 var fs = require('fs')
 const child_process = require('child_process');
+var client = require('./client')
+
 var app = express();
  
 var multer  = require('multer');
@@ -57,10 +59,16 @@ app.post('/file_upload', function (req, res) {
  
    var des_file = __dirname + "/" + req.files[0].originalname;
    fs.readFile( req.files[0].path, function (err, data) {
+       // post resume
+       if (!err) {
+        client.postExtractor(data, response);
+       }
+
+       // save files in local machine
         fs.writeFile(des_file, data, function (err) {
          if( err ){
               console.log( err );
-         }else{
+         }else {
                response = {
                    message:'File uploaded successfully', 
                    filename:req.files[0].originalname
