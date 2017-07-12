@@ -1,4 +1,3 @@
-//express_demo.js 文件
 var express = require('express')
 var util = require('util')
 var path = require("path")
@@ -17,12 +16,6 @@ app.get('/', function (req, res) {
     // res.send('Hello World')
     res.json({msg:"Hello World, this is home page!", status:200})
 })
-
-app.get('/home', function (req, res) {
-   res.sendFile(path.normalize(__dirname + "/public/index.html"))
-   // res.end("this is home page!!")
-})
-
 // get
 app.get('/process_get', function (req, res) {
  
@@ -34,7 +27,6 @@ app.get('/process_get', function (req, res) {
    console.log(response)
    res.end(JSON.stringify(response))
 })
-
 // post
 app.post('/process_post', urlencodedParser, function (req, res) {
 
@@ -45,7 +37,6 @@ app.post('/process_post', urlencodedParser, function (req, res) {
    console.log(response)
    res.end(JSON.stringify(response))
 })
-
 // rest api
 /**
  * 1	listUsers	GET	空	显示所有用户列表
@@ -61,7 +52,6 @@ app.get('/listUsers', function (req, res) {
        res.end( data )
    })
 })
-
 // 添加用户
 //添加的新用户数据
 var userDefine = {
@@ -72,6 +62,11 @@ var userDefine = {
       "id": 4
    }
 }
+
+app.get('/home', function (req, res) {
+   res.sendFile(path.normalize(__dirname + "/public/upload.html"))
+   // res.end("this is home page!!")
+})
 
 app.post('/addUser', function (req, res) {
    // 读取已存在的数据
@@ -125,7 +120,6 @@ app.get('/deleteUser/:id', function (req, res) {
        res.end( JSON.stringify(data))
    })
 })
-
 // 启动服务
 var server = app.listen(8082, function (){
     var host = server.address().address
