@@ -16,27 +16,6 @@ app.get('/', function (req, res) {
     // res.send('Hello World')
     res.json({msg:"Hello World, this is home page!", status:200})
 })
-// get
-app.get('/process_get', function (req, res) {
- 
-   // 输出 JSON 格式
-   var response = {
-       "first_name":req.query.first_name,
-       "last_name":req.query.last_name
-   }
-   console.log(response)
-   res.end(JSON.stringify(response))
-})
-// post
-app.post('/process_post', urlencodedParser, function (req, res) {
-
-   // 输出 JSON 格式
-   var response = {
-       "first_name":req.body.first_name,
-       "last_name":req.body.last_name}
-   console.log(response)
-   res.end(JSON.stringify(response))
-})
 
 app.get('/home', function (req, res) {
    res.sendFile(path.normalize(__dirname + "/public/upload_file.html"))
