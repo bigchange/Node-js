@@ -23,6 +23,7 @@ module.exports = {
   },
   dev: {
     env: require('./dev.env'),
+    // 端口配置
     port: 8080,
     autoOpenBrowser: true,
     assetsSubDirectory: 'static',

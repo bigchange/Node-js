@@ -1,5 +1,5 @@
 # vue init webpack my-project
-# my-project
+# my-project (webpack + vue framework)
 
 > A Vue.js project
 
